@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Bank</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phoneframe">
+
+  <!-- LOGIN -->
+  <section id="screen-login" class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="pad login">
+      <div class="wordmark">Mini Bank</div>
+      <div class="tag">Log in to manage your money</div>
+
+      <div id="login-error" class="error hidden"></div>
+
+      <label class="field">
+        <span class="label">Email</span>
+        <input type="email" id="email" value="asha@example.com" autocomplete="username">
+      </label>
+      <label class="field">
+        <span class="label">Password</span>
+        <input type="password" id="password" value="password123" autocomplete="current-password">
+      </label>
+      <button class="btn" id="login-btn">Log in</button>
+      <div class="hint">Demo login is pre-filled — just tap Log in.</div>
+    </div>
+  </section>
+
+  <!-- HOME -->
+  <section id="screen-home" class="screen hidden">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="topbar">
+      <div class="avatar" id="home-avatar">AR</div>
+      <div class="bellwrap"><div class="dotnotif"></div></div>
+    </div>
+    <div class="pad dash">
+      <div class="greet">Good to see you</div>
+      <div class="name" id="home-name">—</div>
+
+      <div class="balance-card">
+        <div class="balance-top">
+          <span class="balance-label">Available balance</span>
+          <button class="icon-btn" id="toggle-balance">Hide</button>
+        </div>
+        <div class="balance-fig" id="balance-fig">₹0.00</div>
+        <div class="balance-acc" id="balance-acc">—</div>
+      </div>
+
+      <div class="actions">
+        <div class="action" data-goto="transfer">Transfer</div>
+        <div class="action">Pay bill</div>
+        <div class="action" data-goto="cards">Cards</div>
+        <div class="action">Insights</div>
+      </div>
+
+      <div class="insight">
+        <div class="insight-top"><span>This month's spending</span><span id="insight-text">—</span></div>
+        <div class="bar"><span id="insight-bar" style="width:0%"></span></div>
+      </div>
+
+      <div class="section-title">Recent activity</div>
+      <div id="tx-list"></div>
+    </div>
+    <div class="navbar">
+      <div class="navitem on">Home</div>
+      <div class="navitem" data-goto="cards">Cards</div>
+      <div class="navitem" data-goto="transfer">Transfer</div>
+      <div class="navitem">Insights</div>
+      <div class="navitem" data-goto="login" id="logout-btn">Log out</div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section id="screen-cards" class="screen hidden">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="pad cardsscreen">
+      <div class="screen-title">Your cards</div>
+      <div id="card-container"></div>
+      <div class="listrow">
+        <div><div class="t">Freeze card</div><div class="s">Temporarily block payments</div></div>
+        <button class="toggle" id="freeze-toggle"><div class="knob"></div></button>
+      </div>
+      <div class="listrow"><div><div class="t">View PIN</div><div class="s">Requires Face ID</div></div><span>›</span></div>
+      <div class="listrow"><div><div class="t">Set spending limit</div><div class="s" id="card-limit">—</div></div><span>›</span></div>
+    </div>
+    <div class="navbar">
+      <div class="navitem" data-goto="home">Home</div>
+      <div class="navitem on">Cards</div>
+      <div class="navitem" data-goto="transfer">Transfer</div>
+      <div class="navitem">Insights</div>
+      <div class="navitem" data-goto="home">Back</div>
+    </div>
+  </section>
+
+  <!-- TRANSFER -->
+  <section id="screen-transfer" class="screen hidden">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="pad transfer">
+      <div class="t-title">Transfer money</div>
+      <div id="transfer-error" class="error hidden"></div>
+
+      <label class="row2">
+        <span class="label">To (name)</span>
+        <input type="text" id="to-name" placeholder="Rohan Mehta">
+      </label>
+      <label class="row2">
+        <span class="label">To (account, optional)</span>
+        <input type="text" id="to-account" placeholder="•••• 9082">
+      </label>
+      <label class="row2">
+        <span class="label">Amount (₹)</span>
+        <input type="number" id="amount" placeholder="5000" min="1" step="0.01">
+      </label>
+      <label class="row2">
+        <span class="label">Note</span>
+        <input type="text" id="note" placeholder="For the trip advance">
+      </label>
+      <button class="btn" id="transfer-btn">Send transfer</button>
+      <div class="link" data-goto="home">Cancel</div>
+    </div>
+  </section>
+
+  <!-- SUCCESS -->
+  <section id="screen-success" class="screen hidden">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="pad success">
+      <div class="checkwrap">✓</div>
+      <div class="succ-title">Transfer successful</div>
+      <div class="succ-sub">Money is on its way</div>
+      <div class="succ-amt" id="succ-amt">₹0</div>
+      <div class="succ-to" id="succ-to">—</div>
+      <div class="receipt">
+        <div><span>Transaction ID</span><b id="succ-txid">—</b></div>
+        <div><span>Date</span><b id="succ-date">—</b></div>
+        <div><span>Fee</span><b>₹0</b></div>
+      </div>
+      <button class="btn" data-goto="home">Done</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
