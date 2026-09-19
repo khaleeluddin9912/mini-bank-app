@@ -63,6 +63,7 @@ instead of SQLite.
 
 ## Project structure
 
+
 ```
 mini-bank-app/
 ├── app.py              Flask backend + all API routes
